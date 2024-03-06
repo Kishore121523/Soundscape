@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 
 const IBMPlex = IBM_Plex_Sans({ subsets: ["latin"], weight:['400','500','600','700'], variable: "--font-ibm-plex" });
 
+// Metadata
 export const metadata: Metadata = {
   title: "Soundscape",
   description: "Music streaming website with weather conditions and mood",
