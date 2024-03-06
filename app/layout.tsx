@@ -7,7 +7,7 @@ const IBMPlex = IBM_Plex_Sans({ subsets: ["latin"], weight:['400','500','600','7
 
 export const metadata: Metadata = {
   title: "Soundscape",
-  description: "Music streaming website using weather conditions and mood",
+  description: "Music streaming website with weather conditions and mood",
 };
 
 export default function RootLayout({
