@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import WeatherComponent from '@/components/WeatherComp';
 import LocationComp from '@/components/LocationComp';
+import SpotifyRecommendations from '@/components/MediaPlayer/Spotify';
 
 const Home: React.FC = () => {
   const [latitude, setLatitude] = useState<number>();
@@ -21,6 +22,9 @@ const Home: React.FC = () => {
       </div>
       <div className="py-5">
         <WeatherComponent latitude={latitude} longitude={longitude} />
+      </div>
+      <div className='py-5'>
+      <SpotifyRecommendations />
       </div>
     </div>
   );
