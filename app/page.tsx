@@ -4,10 +4,6 @@ import React, { useState } from 'react';
 import WeatherComponent from '@/components/WeatherComp';
 import LocationComp from '@/components/LocationComp';
 import SpotifyRecommendations from '@/components/MediaPlayer/Spotify';
-import dotenv from 'dotenv';
-
-dotenv.config();
-// console.log(process.env)
 
 const Home: React.FC = () => {
   // TODO: Move this logic to client side rendering

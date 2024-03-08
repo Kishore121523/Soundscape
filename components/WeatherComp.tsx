@@ -9,7 +9,7 @@ const OpenWeatherComponent: React.FC<OpenWeatherComponentProps> = ({ latitude, l
   const [weatherData, setWeatherData] = useState<any>(null);
 
   useEffect(() => {
-    const apiKey = '924adec96ff9627b3a92489b6931c476';
+    const apiKey = process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY;
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
 
 

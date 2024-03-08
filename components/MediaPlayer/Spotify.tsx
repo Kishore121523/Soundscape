@@ -1,4 +1,3 @@
-// components/SpotifyRecommendations.tsx
 import React, { useEffect, useState } from 'react';
 import { getRecommendations } from '../../lib/spotify/spotify'
 
