@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getRecommendations } from '../../lib/spotify/spotify'
+import { getRecommendations } from '@/lib/spotify/spotify'
 
 const SpotifyRecommendations: React.FC = () => {
   const [recommendations, setRecommendations] = useState<any[]>([]);

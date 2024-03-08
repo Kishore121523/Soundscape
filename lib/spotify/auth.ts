@@ -1,6 +1,10 @@
 // auth.ts
-import axios, { AxiosResponse } from 'axios';
-import { SPOTIFY_AUTH_URL, SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET } from '../config';
+import axios, { AxiosResponse } from "axios";
+import {
+  SPOTIFY_AUTH_URL,
+  SPOTIFY_CLIENT_ID,
+  SPOTIFY_CLIENT_SECRET,
+} from "../config";
 
 let accessToken: string | null = null;
 let expirationTime: number = 0;
@@ -14,16 +18,18 @@ export const authenticateSpotify = async (): Promise<string | null> => {
     return accessToken;
   }
 
-  const basicAuth = Buffer.from(`${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`).toString('base64');
+  const basicAuth = Buffer.from(
+    `${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`
+  ).toString("base64");
 
   try {
     const response: AxiosResponse<any> = await axios.post(
       `${SPOTIFY_AUTH_URL}/token`,
-      'grant_type=client_credentials',
+      "grant_type=client_credentials",
       {
         headers: {
           Authorization: `Basic ${basicAuth}`,
-          'Content-Type': 'application/x-www-form-urlencoded',
+          "Content-Type": "application/x-www-form-urlencoded",
         },
       }
     );
@@ -33,6 +39,6 @@ export const authenticateSpotify = async (): Promise<string | null> => {
     expirationTime = Date.now() + response.data.expires_in * 1000;
     return accessToken;
   } catch (error) {
-    throw new Error('Authentication failed');
+    throw new Error("Authentication failed");
   }
 };
