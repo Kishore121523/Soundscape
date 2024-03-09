@@ -10,7 +10,7 @@ const Home: React.FC = () => {
   const [latitude, setLatitude] = useState<number|undefined>(undefined);
   const [longitude, setLongitude] = useState<number|undefined>(undefined);
 
-  const handleLocationChange = (lat: number, lon: number) => {
+  const handleLocationChange = (lat: number|undefined, lon: number|undefined) => {
     setLatitude(lat);
     setLongitude(lon);
   };
