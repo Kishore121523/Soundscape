@@ -1,29 +1,19 @@
 'use client'
 
 import React, { useState } from 'react';
-import WeatherComponent from '@/components/WeatherComp';
-import LocationComp from '@/components/LocationComp';
+import WeatherComponent from '@/components/WeatherComp/WeatherComp';
 import SpotifyRecommendations from '@/components/MediaPlayer/Spotify';
 
 const Home: React.FC = () => {
-  // TODO: Move this logic to client side rendering
-  const [latitude, setLatitude] = useState<number|undefined>(undefined);
-  const [longitude, setLongitude] = useState<number|undefined>(undefined);
-
-  const handleLocationChange = (lat: number|undefined, lon: number|undefined) => {
-    setLatitude(lat);
-    setLongitude(lon);
-  };
 
   return (
     <div>
       <h1>Weather App</h1>
+
       <div className="py-5">
-        <LocationComp onLocationChange={handleLocationChange}></LocationComp>
+        <WeatherComponent />
       </div>
-      <div className="py-5">
-        <WeatherComponent latitude={latitude} longitude={longitude} />
-      </div>
+
       <div className='py-5'>
       <SpotifyRecommendations />
       </div>
