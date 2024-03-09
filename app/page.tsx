@@ -7,8 +7,8 @@ import SpotifyRecommendations from '@/components/MediaPlayer/Spotify';
 
 const Home: React.FC = () => {
   // TODO: Move this logic to client side rendering
-  const [latitude, setLatitude] = useState<number>();
-  const [longitude, setLongitude] = useState<number>();
+  const [latitude, setLatitude] = useState<number|undefined>(undefined);
+  const [longitude, setLongitude] = useState<number|undefined>(undefined);
 
   const handleLocationChange = (lat: number, lon: number) => {
     setLatitude(lat);

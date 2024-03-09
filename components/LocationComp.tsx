@@ -5,8 +5,8 @@ interface LocationComponentProps {
 }
 
 const LocationComponent: React.FC<LocationComponentProps> = ({ onLocationChange }) => {
-  const [latitudeFetched, setlatitudeFetched] = useState<number>();
-  const [longitudeFetched, setlongitudeFetched] = useState<number>();
+  const [latitudeFetched, setlatitudeFetched] = useState<number|undefined>(undefined);
+  const [longitudeFetched, setlongitudeFetched] = useState<number|undefined>(undefined);
 
   const getLocation = () => {
     if (navigator.geolocation) {
@@ -28,11 +28,11 @@ const LocationComponent: React.FC<LocationComponentProps> = ({ onLocationChange 
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
 
-    setlatitudeFetched(parseFloat(latitude.toFixed(4)));
-    setlongitudeFetched(parseFloat(longitude.toFixed(4)));
+    setlatitudeFetched(latitude);
+    setlongitudeFetched(longitude);
 
     // Pass the location data to the parent component
-    onLocationChange(parseFloat(latitude.toFixed(4)), parseFloat(longitude.toFixed(4)));
+    onLocationChange(latitude,longitude);
   };
 
   const errorCallback = (error: GeolocationPositionError) => {
