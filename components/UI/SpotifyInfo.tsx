@@ -7,7 +7,7 @@ interface SpotifyInfo{
 
 const SpotifyInfo: React.FC<SpotifyInfo> = ({error,recommendations}) => {
   return (
-      <div className='mx-4 p-4 flex flex-col items-center bg-[#3f3e3e] text-white rounded-md'>
+      <div className='mx-4 p-4 flex flex-col items-center bg-[#3f3e3e] text-white rounded-md z-1'>
       {error ? (
         <p>Error: {error}</p>
       ) : (

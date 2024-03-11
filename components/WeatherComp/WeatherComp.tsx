@@ -38,7 +38,7 @@ const WeatherComp = () => {
   return (
     <div>
       {!btnClicked && 
-      <div className="weatherComp-container flex justify-center items-center">
+      <div className="weatherComp-container flex justify-center items-center z-3">
         <div className="button-container-1">
           <span className="mas">Escape</span>
           <button onClick={handleGetLocation}  id='work' type="button" name="Hover">Escape</button>
@@ -47,7 +47,7 @@ const WeatherComp = () => {
       }
 
       {btnClicked && loading && (
-        <div className="weatherComp-container flex justify-center items-center text-white">
+        <div className="weatherComp-container flex justify-center items-center text-white z-3">
            <Spinner />
         </div>
       )}
