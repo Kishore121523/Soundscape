@@ -1,38 +1,74 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Weather from '@/lib/weather/weather';
 import Location from '@/lib/location/location';
+import Spinner from '../UI/Spinner';
+import WeatherInfo from '../UI/WeatherInfo';
 
 const WeatherComp = () => {
+  const [btnClicked,setbtnClicked] = useState<any>(false);
+  const [loading, setLoading] = useState(false);
+
+
   // Getting Lat and Long 
   const { latitude, longitude, getLocation } = Location();
   const handleGetLocation = () => {
+    setLoading(true);
     getLocation();
+    setbtnClicked(true);
   };
   
   // Getting Weather using Lat and Long
   const { weatherData } = Weather({ latitude, longitude });
   // console.log(JSON.stringify(weatherData, null ,2))
 
+  useEffect(() => {
+    let timer: any;
+
+    if (loading) {
+      timer = setTimeout(() => {
+        setLoading(false);  
+      }, 2000);
+    }
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [loading]);
+
   return (
     <div>
-      <h2>Weather Information</h2>
-      <button onClick={handleGetLocation} className='py-2 bg-black text-white'>Get Weather</button>
-
-    {weatherData && weatherData.cod === 200 && (
-      <div>
-        <h3>Weather in {weatherData.name}</h3>
-        <p>Temperature: {weatherData.main.temp} °C</p>
-        <p>Temperature Min: {weatherData.main.temp_min} °C</p>
-        <p>Temperature Max: {weatherData.main.temp_max} °C</p>
-        <p>Feels Like: {weatherData.main.feels_like} °C</p>
-        <p>Condition: {weatherData.weather[0].main}</p>
-        <p>Description: {weatherData.weather[0].description}</p>
-        <p>Rain: {weatherData.weather[0].main == "Rain"?weatherData.rain:"No Rain"}</p>
-        <p>Humidity: {weatherData.main.humidity}%</p>
-        <p>Wind Speed: {weatherData.wind.speed} m/s, Direction: {weatherData.wind.deg}°</p>
+      {!btnClicked && 
+      <div className="weatherComp-container flex justify-center items-center">
+        <div className="button-container-1">
+          <span className="mas">Escape</span>
+          <button onClick={handleGetLocation}  id='work' type="button" name="Hover">Escape</button>
+        </div>
       </div>
-    )}
+      }
 
+      {btnClicked && loading && (
+        <div className="weatherComp-container flex justify-center items-center text-white">
+           <Spinner />
+        </div>
+      )}
+
+      {btnClicked && !loading  &&  weatherData && weatherData.cod === 200 && (
+        <WeatherInfo 
+          city={weatherData.name} 
+          temp={weatherData.main.temp} 
+          temp_min={weatherData.main.temp_min} 
+          temp_max={weatherData.main.temp_max} 
+          feels_like={weatherData.main.feels_like} 
+          condition={weatherData.weather[0].main} 
+          description={weatherData.weather[0].description} 
+          rain={weatherData.rain} 
+          humidity={weatherData.main.humidity} 
+          windSpeed={weatherData.wind.speed} 
+          windDirection={weatherData.wind.deg} 
+        />
+      )
+      }
+      
     </div>
   );
 };

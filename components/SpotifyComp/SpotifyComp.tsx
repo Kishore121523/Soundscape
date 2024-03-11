@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getRecommendations } from '@/lib/spotify/spotify'
+import SpotifyInfo from '../UI/SpotifyInfo';
 
 const SpotifyRecommendations: React.FC = () => {
   const [recommendations, setRecommendations] = useState<any[]>([]);
@@ -19,20 +20,7 @@ const SpotifyRecommendations: React.FC = () => {
   }, []);
 
   return (
-    <div>
-      {error ? (
-        <p>Error: {error}</p>
-      ) : (
-        <div>
-          <h2>Spotify Recommendations</h2>
-          <ul>
-            {recommendations.map((track) => (
-              <li key={track.id}>{track.name}</li>
-            ))}
-          </ul>
-        </div>
-      )}
-    </div>
+    <SpotifyInfo error={error} recommendations={recommendations} />
   );
 };
 
