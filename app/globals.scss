@@ -68,9 +68,16 @@
     background-color: #222222;
 }
 
-.btn-weather {
-    background-color: #605e5e;
-    border-radius: 8px;
+
+/* WeatherInfo.css */
+
+.weather-info {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.loaded {
+    opacity: 1;
 }
 
 // Landing Button CSS

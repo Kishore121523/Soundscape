@@ -12,11 +12,13 @@ interface WeatherInfoProps {
   humidity: number;
   windSpeed: number;
   windDirection: number;
+  classes:any;
 }
 
-const WeatherInfo: React.FC<WeatherInfoProps> = ({ city, temp, temp_min, temp_max, feels_like, condition, description,rain,humidity,windSpeed,windDirection }) => {
+const WeatherInfo: React.FC<WeatherInfoProps> = 
+({ city, temp, temp_min, temp_max, feels_like, condition, description,rain,humidity,windSpeed,windDirection, classes }) => {
   return (
-      <div className='m-4 p-4 flex flex-col items-center bg-[#3f3e3e] text-white rounded-md z-1'>
+      <div className={`m-4 p-4 flex flex-col items-center bg-[#3f3e3e] text-white rounded-md weather-info ${classes}`}>
           <h3>Weather in {city}</h3>
           <p>Temperature: {temp} °C</p>
           <p>Temperature Min: {temp_min} °C</p>

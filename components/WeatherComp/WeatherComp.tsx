@@ -1,19 +1,31 @@
+'use client'
 import React, { useEffect, useState } from 'react';
 import Weather from '@/lib/weather/weather';
 import Location from '@/lib/location/location';
 import Spinner from '../UI/Spinner';
 import WeatherInfo from '../UI/WeatherInfo';
+import { useAppState } from '@/app/AppStateContext';
+
 
 const WeatherComp = () => {
   const [btnClicked,setbtnClicked] = useState<any>(false);
   const [loading, setLoading] = useState(false);
+  // const [ loaded, setLoaded ] = useState(false);
+  const { loaded, setLoaded } = useAppState();
+
 
 
   // Getting Lat and Long 
   const { latitude, longitude, getLocation } = Location();
   const handleGetLocation = () => {
     setLoading(true);
+
     getLocation();
+
+    setTimeout(() => {
+      setLoaded(true);
+    }, 2500);
+
     setbtnClicked(true);
   };
   
@@ -38,7 +50,7 @@ const WeatherComp = () => {
   return (
     <div>
       {!btnClicked && 
-      <div className="weatherComp-container flex justify-center items-center z-3">
+      <div className={"weatherComp-container flex justify-center items-center z-3"}>
         <div className="button-container-1">
           <span className="mas">Escape</span>
           <button onClick={handleGetLocation}  id='work' type="button" name="Hover">Escape</button>
@@ -47,7 +59,7 @@ const WeatherComp = () => {
       }
 
       {btnClicked && loading && (
-        <div className="weatherComp-container flex justify-center items-center text-white z-3">
+        <div className={"weatherComp-container flex justify-center items-center"}>
            <Spinner />
         </div>
       )}
@@ -65,9 +77,9 @@ const WeatherComp = () => {
           humidity={weatherData.main.humidity} 
           windSpeed={weatherData.wind.speed} 
           windDirection={weatherData.wind.deg} 
+          classes={loaded ? 'loaded' : ''}
         />
-      )
-      }
+      )}
       
     </div>
   );
