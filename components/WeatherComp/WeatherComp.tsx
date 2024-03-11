@@ -10,18 +10,14 @@ import { useAppState } from '@/app/AppStateContext';
 const WeatherComp = () => {
   const [btnClicked,setbtnClicked] = useState<any>(false);
   const [loading, setLoading] = useState(false);
-  // const [ loaded, setLoaded ] = useState(false);
   const { loaded, setLoaded } = useAppState();
 
-
-
-  // Getting Lat and Long 
   const { latitude, longitude, getLocation } = Location();
+
   const handleGetLocation = () => {
     setLoading(true);
-
     getLocation();
-
+    
     setTimeout(() => {
       setLoaded(true);
     }, 2500);
@@ -29,7 +25,6 @@ const WeatherComp = () => {
     setbtnClicked(true);
   };
   
-  // Getting Weather using Lat and Long
   const { weatherData } = Weather({ latitude, longitude });
   // console.log(JSON.stringify(weatherData, null ,2))
 
@@ -60,7 +55,7 @@ const WeatherComp = () => {
 
       {btnClicked && loading && (
         <div className={"weatherComp-container flex justify-center items-center"}>
-           <Spinner />
+          <Spinner />
         </div>
       )}
 

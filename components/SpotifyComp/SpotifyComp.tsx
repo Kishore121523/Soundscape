@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { getRecommendations } from '@/lib/spotify/spotify'
 import SpotifyInfo from '../UI/SpotifyInfo';
+import { useAppState } from '@/app/AppStateContext';
 
 const SpotifyRecommendations: React.FC = () => {
   const [recommendations, setRecommendations] = useState<any[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const { loaded } = useAppState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,7 +22,7 @@ const SpotifyRecommendations: React.FC = () => {
   }, []);
 
   return (
-    <SpotifyInfo error={error} recommendations={recommendations} />
+    <SpotifyInfo error={error} recommendations={recommendations} classes={loaded ? 'loaded' : ''}/>
   );
 };
 
