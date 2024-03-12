@@ -5,7 +5,9 @@ import Location from '@/lib/location/location';
 import Spinner from '../UI/Spinner';
 import WeatherInfo from '../UI/WeatherInfo';
 import { useAppState } from '@/app/AppStateContext';
+import Image from 'next/image'
 
+import arrow from "@/public/assets/arrow.png"
 
 const WeatherComp = () => {
   const [btnClicked,setbtnClicked] = useState<any>(false);
@@ -17,7 +19,7 @@ const WeatherComp = () => {
   const handleGetLocation = () => {
     setLoading(true);
     getLocation();
-    
+
     setTimeout(() => {
       setLoaded(true);
     }, 2500);
@@ -45,7 +47,8 @@ const WeatherComp = () => {
   return (
     <div>
       {!btnClicked && 
-      <div className={"weatherComp-container flex justify-center items-center z-3"}>
+      <div className={"weatherComp-container flex justify-center items-center"}>
+        <Image className="arrow-main" src={arrow} alt="logo" width={70} height={40} />
         <div className="button-container-1">
           <span className="mas">Escape</span>
           <button onClick={handleGetLocation}  id='work' type="button" name="Hover">Escape</button>

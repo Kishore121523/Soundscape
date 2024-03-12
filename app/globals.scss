@@ -80,6 +80,12 @@
     opacity: 1;
 }
 
+.arrow-main {
+    position: absolute;
+    margin-bottom: 8%;
+    margin-right: 13%;
+}
+
 // Landing Button CSS
 @mixin button($bcolor, $url, $x1, $y1, $bor, $col) {
     background: $bcolor;
