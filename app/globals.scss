@@ -54,6 +54,7 @@
     body {
         @apply bg-background text-foreground;
         background-color: #222222;
+        overflow-y: hidden;
     }
 }
 
@@ -73,7 +74,7 @@
 
 .weather-info {
     opacity: 0;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease;
 }
 
 .loaded {
@@ -82,8 +83,8 @@
 
 .arrow-main {
     position: absolute;
-    margin-bottom: 8%;
-    margin-right: 13%;
+    margin-bottom: 7rem;
+    margin-right: 14rem;
 }
 
 // Landing Button CSS
@@ -99,8 +100,8 @@
 
 .button-container-1 {
     position: relative;
-    width: 100px;
-    height: 50px;
+    width: 120px;
+    height: 60px;
     margin-left: auto;
     margin-right: auto;
     overflow: hidden;
@@ -112,7 +113,7 @@
     button {
         width: 101%;
         height: 100%;
-        font-size: 12px;
+        font-size: 14px;
         letter-spacing: 1px;
         font-weight: bold;
         @include button( #1DB954, "https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png", 2300%, 100%, none, #000000);
@@ -134,7 +135,7 @@
     font-family: "Lato", sans-serif;
     font-weight: 300;
     position: absolute;
-    font-size: 12px;
+    font-size: 14px;
     margin-top: 17px;
     overflow: hidden;
     font-weight: bold;

@@ -7,10 +7,12 @@ import SpotifyRecommendations from '@/components/SpotifyComp/SpotifyComp';
 const Home: React.FC = () => {
 
   return (
-    <div>
+    <>
       <WeatherComponent />
+    <div className='mx-8'>
       <SpotifyRecommendations />
     </div>
+    </>
   );
 };
 

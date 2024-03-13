@@ -1,5 +1,4 @@
 import React from 'react'
-import { useAppState } from '@/app/AppStateContext';
 
 interface SpotifyInfo{
   error: any;
@@ -8,10 +7,9 @@ interface SpotifyInfo{
 }
 
 const SpotifyInfo: React.FC<SpotifyInfo> = ({error,recommendations, classes}) => {
-  const { loaded, setLoaded } = useAppState();
   
   return (
-      <div className={`m-4 p-4 flex flex-col items-center bg-[#3f3e3e] text-white rounded-md weather-info ${classes}`}>
+      <div className={`p-4 flex flex-col items-center bg-[#3f3e3e] text-white rounded-md weather-info ${classes}`}>
       {error ? (
         <p>Error: {error}</p>
       ) : (
