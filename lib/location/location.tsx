@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { getGeoLocationFromRequestHeaders } from './request_location';
 
 const location = () => {
   const [latitude, setLatitude] = useState<number | undefined>(undefined);
@@ -28,10 +29,14 @@ const location = () => {
     setLongitude(fetchedLongitude);
   };
 
-  const errorCallback = (error: GeolocationPositionError) => {
+  const errorCallback = async (error: GeolocationPositionError) => {
     switch (error.code) {
       case error.PERMISSION_DENIED:
         alert('User denied the request for Geolocation.');
+        console.log('Using request headers to determine the location')
+        const position = await getGeoLocationFromRequestHeaders();
+        setLatitude(position.latitude);
+        setLongitude(position.longitude);
         break;
       case error.POSITION_UNAVAILABLE:
         alert('Location information is unavailable.');
