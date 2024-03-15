@@ -18,8 +18,10 @@ const SpotifyRecommendations: React.FC = () => {
       }
     };
 
-    fetchData();
-  }, []);
+    if (loaded){
+      fetchData();
+    }
+  }, [loaded]);
 
   return (
     <SpotifyInfo error={error} recommendations={recommendations} classes={loaded ? 'loaded' : ''}/>
