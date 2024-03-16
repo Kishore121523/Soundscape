@@ -17,7 +17,7 @@ const SpotifyRecommendations: React.FC = () => {
         setError('Failed to fetch recommendations');
       }
     };
-
+    
     if (loaded){
       fetchData();
     }
