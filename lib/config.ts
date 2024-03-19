@@ -9,3 +9,4 @@ export const SPOTIFY_CLIENT_SECRET =
 
 // Weather
 export const WEATHER_API_KEY = process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY;
+export const WEATHER_API_URL = "https://api.openweathermap.org/data/2.5"

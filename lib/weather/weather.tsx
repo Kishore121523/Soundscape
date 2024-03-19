@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { WEATHER_API_KEY } from "../config";
+import { WEATHER_API_KEY, WEATHER_API_URL } from "../config";
 
 interface WeatherProps {
   latitude: number | undefined;
@@ -14,7 +14,7 @@ const Weather = ({ latitude, longitude }: WeatherProps) => {
       try {
         if (latitude !== undefined && longitude !== undefined) {
           const apiKey = WEATHER_API_KEY;
-          const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+          const apiUrl = `${WEATHER_API_URL}/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
 
           const response = await fetch(apiUrl);
           const data = await response.json();
