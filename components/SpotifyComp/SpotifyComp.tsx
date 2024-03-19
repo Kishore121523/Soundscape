@@ -17,9 +17,11 @@ const SpotifyRecommendations: React.FC = () => {
         setError('Failed to fetch recommendations');
       }
     };
-
-    fetchData();
-  }, []);
+    
+    if (loaded){
+      fetchData();
+    }
+  }, [loaded]);
 
   return (
     <SpotifyInfo error={error} recommendations={recommendations} classes={loaded ? 'loaded' : ''}/>

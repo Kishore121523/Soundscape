@@ -8,7 +8,7 @@ export const getRecommendations = async (): Promise<AxiosResponse<any>> => {
   try {
     const response: AxiosResponse<any> = await axios.get(
       // Remove the "" around base url when needed to test
-      `${"SPOTIFY_API_BASE_URL"}/recommendations`,
+      `${SPOTIFY_API_BASE_URL}/recommendations`,
       {
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -20,6 +20,7 @@ export const getRecommendations = async (): Promise<AxiosResponse<any>> => {
       }
     );
 
+    console.log(response);
     return response;
   } catch (error) {
     throw new Error("Failed to get recommendations");
